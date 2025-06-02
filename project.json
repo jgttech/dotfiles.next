@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "name": "dotfiles",
+  "cli": "tools/python",
+  "stow": "packages",
+  "out": ".build",
+  "cfg": "config",
+  "bin": "bin"
+}

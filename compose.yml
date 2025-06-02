@@ -1,0 +1,22 @@
+services:
+  archlinux:
+    build:
+      dockerfile: Dockerfile.archlinux
+    volumes:
+      - .:/home/user/.dotfiles
+    environment:
+      - TERM=xterm-256color
+      - UV_CACHE_DIR=/tmp/.cache/uv
+      - UV_PROJECT_ENVIRONMENT=/tmp/.venv
+    stdin_open: true
+    tty: true
+    working_dir: /home/user
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /home/user
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./uv.lock
