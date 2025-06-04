@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo=""
+lang="python"
+root="$HOME/.dotfiles"
+
+function is_installed {
+  # Check if a value is provided.
+  if [ -z "$1" ]; then
+    return 1
+  fi
+
+  # Try checking the 'type'. This
+  # is builtin and reliable, generally.
+  if type "$1" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  # Fallback to 'which'.
+  if which "$1" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  # Last resort: try to execute with --version or --help
+  # (some programs exist but aren't in PATH detection).
+  if "$1" --version >/dev/null 2>&1 || "$1" --help >/dev/null 2>&1; then
+    return 0
+  fi
+
+  return 1
+}
+
+# Clone the repo, if it does not already exist.
+if [[ ! -d "$root" ]]; then
+  git clone "$repo" "$root"
+fi
+
+# Install "uv".
+if ! is_installed uv; then
+  if is_installed curl; then
+    curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null 2>&1
+  elif is_installed wget; then
+    wget -qO- https://astral.sh/uv/install.sh | sh >/dev/null 2>&1
+  fi
+fi
+
+# Make "uv" available on the PATH.
+export PATH="$HOME/.local/bin:$PATH"
+
+# We need to run the install WITHIN the dotfiles
+# repo so that the cwd (current working directory)
+# can be used to detect the dotfiles home direcotry
+# dynamically.
+cd "$root"
+
+# Runs the install process for a particular
+# language.
+uv run main.py install ${lang}

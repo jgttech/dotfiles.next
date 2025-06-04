@@ -1,9 +1,19 @@
 {
   "version": "0.0.1",
-  "name": "dotfiles",
-  "cli": "tools/python",
-  "stow": "packages",
   "out": ".build",
-  "cfg": "config",
-  "bin": "bin"
+  "cfg": "cfg",
+  "bin": "bin",
+  "dependencies": [
+    "git",
+    "jq",
+    "stow",
+    "nvm",
+    "omz",
+    "lua",
+    "zip",
+    "unzip",
+    "ripgrep",
+    "fd",
+    "fzf"
+  ]
 }
