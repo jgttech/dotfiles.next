@@ -1,5 +1,5 @@
-import click
+import src.cli as cli
 
-@click.command("odin")
-def install() -> None:
-    print("Installing odin")
+@cli.installer("odin")
+def install(ctx: cli.Context) -> None:
+    pass

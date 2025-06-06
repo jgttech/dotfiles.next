@@ -1,1 +1,2 @@
-from .cli import *
+from .Cli import *
+from .installer import *

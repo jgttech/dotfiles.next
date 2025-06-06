@@ -1,13 +1,6 @@
-import click
-from pathlib import Path
-from src.cfg import ProjectJson, BuildJson
+import src.cli as cli
 
-@click.command("python")
-def install() -> None:
-    base = Path.cwd()
-    project_json = ProjectJson.load(base)
-    build_json = BuildJson(base)
-
-    print(f"base: {base}")
-    print(project_json.to_json())
-    print(build_json.to_json())
+@cli.installer("python")
+def install(ctx: cli.Context) -> None:
+    print(ctx.project.to_json())
+    print(ctx.build.to_json())

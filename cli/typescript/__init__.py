@@ -1,5 +1,5 @@
-import click
+import src.cli as cli
 
-@click.command("typescript")
-def install() -> None:
-    print("Installing typescript")
+@cli.installer("typescript")
+def install(ctx: cli.Context) -> None:
+    pass

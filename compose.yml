@@ -1,7 +1,7 @@
 services:
-  archlinux:
+  arch:
     build:
-      dockerfile: Dockerfile.archlinux
+      dockerfile: Dockerfile.arch
     volumes:
       - .:/home/user/.dotfiles
     environment:

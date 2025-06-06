@@ -1,5 +1,5 @@
-import click
+import src.cli as cli
 
-@click.command("go")
-def install() -> None:
-    print("Installing go")
+@cli.installer("go")
+def install(ctx: cli.Context) -> None:
+    pass

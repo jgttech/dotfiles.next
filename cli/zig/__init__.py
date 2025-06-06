@@ -1,5 +1,5 @@
-import click
+import src.cli as cli
 
-@click.command("zig")
-def install() -> None:
-    print("Installing zig")
+@cli.installer("zig")
+def install(ctx: cli.Context) -> None:
+    pass

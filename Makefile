@@ -1,12 +1,12 @@
 INSTALL := .dotfiles/install
 
-.PHONY: archlinux
-archlinux:
+.PHONY: arch
+arch:
 	@clear
-	@docker compose down archlinux
-	@docker compose up archlinux -d
-	@docker compose exec archlinux bash -c 'cat $$HOME/$(INSTALL) | bash'
+	@docker compose down arch
+	@docker compose up arch -d
+	@docker compose exec arch bash -c 'cat $$HOME/$(INSTALL) | bash'
 
-.PHONY: ssh-archlinux
-ssh-archlinux:
-	@docker compose exec archlinux bash
+.PHONY: ssh-arch
+ssh-arch:
+	@docker compose exec arch bash
