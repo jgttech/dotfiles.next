@@ -15,4 +15,5 @@ class Context:
     # Intented for any initialization work to
     # prep the installation process.
     def init(self) -> None:
+        self.project.ensure_dependencies()
         self.build.init()

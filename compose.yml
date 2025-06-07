@@ -2,8 +2,6 @@ services:
   arch:
     build:
       dockerfile: Dockerfile.arch
-    volumes:
-      - .:/home/user/.dotfiles
     environment:
       - TERM=xterm-256color
       - UV_CACHE_DIR=/tmp/.cache/uv
@@ -11,12 +9,15 @@ services:
     stdin_open: true
     tty: true
     working_dir: /home/user
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /home/user
-          ignore:
-            - .venv/
-        - action: rebuild
-          path: ./uv.lock
+    volumes:
+      - ./cli:/home/user/.dotfiles/cli
+      - ./os:/home/user/.dotfiles/os
+      - ./src:/home/user/.dotfiles/src
+      - ./install:/home/user/.dotfiles/install
+      - ./main.py:/home/user/.dotfiles/main.py
+      - ./project.json:/home/user/.dotfiles/project.json
+      - ./pyproject.toml:/home/user/.dotfiles/pyproject.toml
+      - ./uv.lock:/home/user/.dotfiles/uv.lock
+    tmpfs:
+      - /home/user/.dotfiles/.build:uid=1000,gid=1000,exec
+    command: bash -c "sleep infinity"
