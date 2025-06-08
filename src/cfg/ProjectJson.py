@@ -14,7 +14,7 @@ class ProjectJson(DataClassJsonMixin):
     out: str = ""
     cfg: str = ""
     bin: str = ""
-    dependencies: list[str] = field(default_factory=list)
+    dependencies: dict[str, str] = field(default_factory=dict)
 
     @staticmethod
     def load(dir: Path):
@@ -30,25 +30,28 @@ class ProjectJson(DataClassJsonMixin):
         console = Console()
         max = len(self.dependencies)
 
+        print(self.dependencies)
         console.print("[bold]Checking dependencies, please wait...[/bold]")
 
         with console.status("Please wait...") as status:
             log = InstallLogger(console, status, max)
 
             for idx, name in enumerate(self.dependencies):
+                value = self.dependencies[name]
                 pkg = Package(name)
-                
+
                 log.checking(idx, pkg.name)
 
-                if pkg.exists():
-                    log.ok(name)
-                else:
-                    log.installing(idx, name)
-                    pkg.install()
-
+                if value == "auto":
                     if pkg.exists():
                         log.ok(name)
                     else:
-                        log.fail(name)
+                        log.installing(idx, name)
+                        pkg.install()
 
+                        if pkg.exists():
+                            log.ok(name)
+                        else:
+                            log.fail(name)
+                    
         console.print("[dim bold]Done.[/dim bold]")
