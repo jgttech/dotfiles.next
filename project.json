@@ -3,17 +3,19 @@
   "out": ".build",
   "cfg": "cfg",
   "bin": "bin",
-  "dependencies": [
-    "git",
-    "jq",
-    "stow",
-    "nvm",
-    "omz",
-    "lua",
-    "zip",
-    "unzip",
-    "ripgrep",
-    "fd",
-    "fzf"
-  ]
+  "dependencies": {
+    "zsh": "auto",
+    "nvm": "bin/packages/nvm",
+    "omz": "bin/packages/omz",
+    "git": "auto",
+    "jq": "auto",
+    "stow": "auto",
+    "lua": "auto",
+    "luarocks": "auto",
+    "zip": "auto",
+    "unzip": "auto",
+    "ripgrep": "auto",
+    "fd": "auto",
+    "fzf": "auto"
+  }
 }
