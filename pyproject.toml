@@ -1,16 +1,18 @@
 [project]
-version = "0.0.0"
 name = "dotfiles-next"
+version = "0.0.0"
 description = "My personal dotfiles"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "click>=8.2.1",
     "dataclasses-json>=0.6.7",
+    "pydantic>=2.11.5",
+    "pyyaml>=6.0.2",
     "rich>=14.0.0",
 ]
 
-[tool.uv.workspace]
-members = [
-    "cli/python",
-]
+# [tool.uv.workspace]
+# members = [
+#     "cli/python",
+# ]

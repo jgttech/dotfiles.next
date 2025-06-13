@@ -15,7 +15,7 @@ services:
       - ./src:/home/user/.dotfiles/src
       - ./install:/home/user/.dotfiles/install
       - ./main.py:/home/user/.dotfiles/main.py
-      - ./project.json:/home/user/.dotfiles/project.json
+      - ./dotfiles.yml:/home/user/.dotfiles/dotfiles.yml
       - ./pyproject.toml:/home/user/.dotfiles/pyproject.toml
       - ./uv.lock:/home/user/.dotfiles/uv.lock
     tmpfs:

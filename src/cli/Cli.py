@@ -1,35 +1,34 @@
-import click
+from click import Group
 from pathlib import Path
 from importlib import import_module
-from src.errors import ModuleNotFound
 
 class Cli:
     root: Path
-    cli: click.Group
-    install: click.Group
+    cli = Group()
+    install = Group("install")
+    uninstall = Group("uninstall")
 
     def __init__(self, root: Path) -> None:
         self.root = root
-        self.cli = click.Group()
 
-        install = click.Group("install")
+        if not self.root.is_dir():
+            raise FileNotFoundError(f"Directory does not exist: {self.root}")
 
-        # Register all the commands that exist.
-        if self.root.is_dir():
-            for cmd in self.root.iterdir():
-                if not cmd.is_dir:
-                    return
+        for cmd in self.root.iterdir():
+            if not cmd.is_dir():
+                continue
 
-                name = f"{self.root.name}.{cmd.name}"
-                module = import_module(name)
+            name = f"{self.root.name}.{cmd.name}"
+            install_module = import_module(f"{name}.__install__")
+            uninstall_module = import_module(f"{name}.__uninstall__")
 
-                if not hasattr(module, "install"):
-                    raise ModuleNotFoundError(name)
+            if hasattr(install_module, "main"):
+                self.install.add_command(install_module.main)
 
-                install.add_command(module.install)
-
-        self.install = install
+            if hasattr(uninstall_module, "main"):
+                self.uninstall.add_command(uninstall_module.main)
 
     def run(self) -> None:
         self.cli.add_command(self.install)
+        self.cli.add_command(self.uninstall)
         self.cli()
