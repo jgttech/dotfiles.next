@@ -1,22 +1,32 @@
 import yaml
 from pathlib import Path
-from pydantic import BaseModel
+from src.os import Package
 
-class Conf(BaseModel):
-    name: str
-    version: str
-    build: list[str]
-    source: str
-    packages: list[str]
+class Conf:
+    name: str = ""
+    version: str = ""
+    build: list[str] = []
+    source: Path
+    packages: list[Package] = []
 
     @staticmethod
-    def create(conf_file: Path):
+    def create(file: Path, home: Path):
         data: dict
+        conf = Conf()
 
-        if not conf_file.exists():
-            raise FileNotFoundError(conf_file)
+        if not file.exists():
+            raise FileNotFoundError(file)
 
-        with open(conf_file, "r") as fp:
+        with open(file, "r") as fp:
             data = yaml.safe_load(fp)
+            source = home / data["source"]
 
-        return Conf(**data)
+            conf.name = data["name"]
+            conf.version = data["version"]
+            conf.build = data["build"]
+            conf.source = source
+
+            for pkg in data["packages"]:
+                conf.packages.append(Package(pkg, source, home))
+
+        return conf

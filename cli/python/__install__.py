@@ -1,5 +1,5 @@
-import click
+import src.cli as cli
 
-@click.command("python")
-def main() -> None:
+@cli.command("python")
+def main(ctx: cli.Context) -> None:
     print("Installing")
