@@ -1,37 +1,15 @@
-from types import ModuleType
+from pathlib import Path
+from src.conf import conf
 
 
 class Package:
     name: str
-    module: None | ModuleType
+    module: None | Path = None
 
     def __init__(self, name: str) -> None:
-        pass
-        # if "@" in name:
-        #     package, dir = name.split("@")
-        #     module_path = 
-
-# from pathlib import Path
-# from src.pm import File, Pacman, Homebrew
-# from .installed import installed
-#
-# class Package:
-#     name: str
-#     package_manager: 
-#
-#     def __init__(self, name: str, source: Path, home: Path) -> None:
-#         self.name = name
-#
-#         if "@" in name:
-#             pkg, path = name.split("@")
-#             dir = home / source / path
-#
-#             self.name = pkg
-#             self.package_manager = File(dir)
-#         elif installed("pacman"):
-#             self.package_manager = Pacman()
-#         elif installed("brew"):
-#             self.package_manager = Homebrew()
-#
-#     def install(self):
-#         self.package_manager.install(self.name)
+        if "@" in name:
+            pkg_name, dir = name.split("@")
+            self.module = conf.source / dir / f"{pkg_name}.py"
+            self.name = pkg_name
+        else:
+            self.name = name

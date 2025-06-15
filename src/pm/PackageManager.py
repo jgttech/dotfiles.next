@@ -13,11 +13,21 @@ class PackageManager:
             self.source = Pacman()
         elif installed("brew"):
             self.source = Brew()
-        else:
-            self.source = File()
 
     def add(self, name: str) -> None:
         self.packages.append(Package(name))
 
     def install(self) -> None:
-        pass
+        cmd = []
+
+        if isinstance(self.source, Pacman):
+            cmd.append("sudo pacman -Syu --noconfirm")
+        elif isinstance(self.source, Brew):
+            cmd.append("brew")
+
+        for package in self.packages:
+            if not package.module:
+                cmd.append(package.name)
+
+        print(" ".join(cmd))
+
