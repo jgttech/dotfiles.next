@@ -1,2 +1,0 @@
-class Homebrew:
-    pass

@@ -24,3 +24,5 @@ class Conf:
             self.build = data["build"]
             self.packages = data["packages"]
             self.source = home / data["source"]
+
+conf = Conf()

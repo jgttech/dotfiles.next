@@ -1,5 +1,15 @@
+from types import ModuleType
+
+
 class Package:
-    pass
+    name: str
+    module: None | ModuleType
+
+    def __init__(self, name: str) -> None:
+        pass
+        # if "@" in name:
+        #     package, dir = name.split("@")
+        #     module_path = 
 
 # from pathlib import Path
 # from src.pm import File, Pacman, Homebrew

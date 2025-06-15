@@ -2,14 +2,13 @@ import click
 from click import Context
 from typing import Callable, TypeVar
 from src.env import env
-from src.conf import Conf
+from src.conf import conf
 from src.pm import PackageManager
 
 T = TypeVar("T")
 
 def command(dir: str):
     cli = env.home / "cli" / dir
-    conf = Conf()
     package_manager = PackageManager()
 
     for package in conf.packages:
