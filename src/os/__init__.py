@@ -1,1 +1,1 @@
-from .Package import *
+from .installed import *

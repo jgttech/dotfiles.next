@@ -1,12 +1,21 @@
 import click
 from click import Context
 from typing import Callable, TypeVar
-from src.ctx import env
+from src.env import env
+from src.conf import Conf
+from src.pm import PackageManager
 
 T = TypeVar("T")
 
 def command(dir: str):
     cli = env.home / "cli" / dir
+    conf = Conf()
+    package_manager = PackageManager()
+
+    for package in conf.packages:
+        package_manager.add(package)
+
+    package_manager.install()
 
     def decorator(fn: Callable[[Context], T]) -> Callable[[], T]:
         @click.command(cli.name)
