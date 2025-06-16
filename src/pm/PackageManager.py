@@ -1,12 +1,13 @@
 from src.os import installed
 from .Package import Package
-from .source.File import File
+from .source.Files import Files
 from .source.Brew import Brew
 from .source.Pacman import Pacman
 
 class PackageManager:
     packages: list[Package] = []
-    source: None | File | Brew | Pacman = None
+    source: None | Brew | Pacman = None
+    files = Files()
 
     def __init__(self) -> None:
         if installed("pacman"):
@@ -18,16 +19,11 @@ class PackageManager:
         self.packages.append(Package(name))
 
     def install(self) -> None:
-        cmd = []
+        packages = [p.name for p in self.packages if p.module is None]
+        files = [str(p.module) for p in self.packages if p.module is not None]
 
-        if isinstance(self.source, Pacman):
-            cmd.append("sudo pacman -Syu --noconfirm")
-        elif isinstance(self.source, Brew):
-            cmd.append("brew")
-
-        for package in self.packages:
-            if not package.module:
-                cmd.append(package.name)
-
-        print(" ".join(cmd))
-
+        if len(files) > 0:
+            self.files.install(files)
+        
+        if self.source is not None:
+            self.source.install(packages)

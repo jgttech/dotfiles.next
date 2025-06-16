@@ -1,9 +1,10 @@
 import click
-from click import Context
 from typing import Callable, TypeVar
+from src.pm import PackageManager
 from src.env import env
 from src.conf import conf
-from src.pm import PackageManager
+from .pass_context import pass_context
+from .Context import Context
 
 T = TypeVar("T")
 
@@ -18,9 +19,9 @@ def command(dir: str):
 
     def decorator(fn: Callable[[Context], T]) -> Callable[[], T]:
         @click.command(cli.name)
-        @click.pass_context
-        def wrapper(ctx) -> T:
-            return fn(ctx)
+        @pass_context
+        def wrapper(ctx: Context, *args, **kwargs):
+            return fn(ctx, *args, **kwargs)
 
         return wrapper
     return decorator
