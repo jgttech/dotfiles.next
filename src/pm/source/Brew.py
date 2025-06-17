@@ -2,6 +2,7 @@ import json
 from subprocess import run, call
 from src.pm.Source import Source
 
+
 class Brew(Source):
     def install(self, packages: list[str]) -> None:
         casks = []

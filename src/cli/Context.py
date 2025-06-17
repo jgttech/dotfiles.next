@@ -1,6 +1,8 @@
-from src.env import env
-from src.conf import conf
+from typing import Tuple
+from src.env import Environment, env
+from src.conf import Conf, conf
 
 class Context:
-    env = env
-    conf = conf
+    @property
+    def state(self) -> Tuple[Environment, Conf]:
+        return (env, conf)

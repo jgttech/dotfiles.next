@@ -6,7 +6,7 @@ class Conf:
     name: str = ""
     version: str = ""
     build: list[str] = []
-    source: Path
+    local: Path
     packages: list[str] = []
 
     def __init__(self) -> None:
@@ -23,6 +23,6 @@ class Conf:
             self.version = data["version"]
             self.build = data["build"]
             self.packages = data["packages"]
-            self.source = home / data["source"]
+            self.local = home / data["local"]
 
 conf = Conf()

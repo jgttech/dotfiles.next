@@ -16,14 +16,17 @@ class PackageManager:
             self.source = Brew()
 
     def add(self, name: str) -> None:
-        self.packages.append(Package(name))
+        dep = Package(name)
+
+        if not len([pkg for pkg in self.packages if pkg == dep]):
+            self.packages.append(dep)
 
     def install(self) -> None:
         packages = [p.name for p in self.packages if p.module is None]
-        files = [str(p.module) for p in self.packages if p.module is not None]
+        modules = [str(p.module) for p in self.packages if p.module is not None]
 
-        if len(files) > 0:
-            self.files.install(files)
-        
+        if len(modules) > 0:
+            self.files.install(modules)
+
         if self.source is not None:
             self.source.install(packages)

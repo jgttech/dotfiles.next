@@ -10,17 +10,18 @@ T = TypeVar("T")
 
 def command(dir: str):
     cli = env.home / "cli" / dir
-    package_manager = PackageManager()
-
-    for package in conf.packages:
-        package_manager.add(package)
-
-    package_manager.install()
 
     def decorator(fn: Callable[[Context], T]) -> Callable[[], T]:
         @click.command(cli.name)
         @pass_context
         def wrapper(ctx: Context, *args, **kwargs):
+            package_manager = PackageManager()
+
+            for package in conf.packages:
+                package_manager.add(package)
+
+            package_manager.install()
+
             return fn(ctx, *args, **kwargs)
 
         return wrapper
