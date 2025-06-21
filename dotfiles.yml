@@ -6,14 +6,6 @@ name: dotfiles
 # The version of the dotfiles.
 version: 0.0.1
 
-# The build directories that need
-# to exist. When installing the
-# dotfiles.
-build:
-  - .build
-  - .build/cfg
-  - .build/bin
-
 # The source directory for running
 # custom package installers. When
 # I use "<package>@<path>" the "path"
@@ -40,5 +32,6 @@ packages:
   - fzf
   - atac
   - ctop
+  - tree
   - nvm@{local}
   - omz@{local}

@@ -5,7 +5,6 @@ from src.env import env
 class Conf:
     name: str = ""
     version: str = ""
-    build: list[str] = []
     local: Path
     packages: list[str] = []
 
@@ -24,7 +23,6 @@ class Conf:
 
             self.name = data["name"]
             self.version = data["version"]
-            self.build = data["build"]
             self.local = home / data["local"]
 
 conf = Conf()

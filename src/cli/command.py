@@ -22,6 +22,12 @@ def command(dir: str):
 
             package_manager.install()
 
+            if not env.bin.exists():
+                env.bin.mkdir(parents=True)
+
+            if not env.cfg.exists():
+                env.cfg.mkdir(parents=True)
+
             return fn(ctx, *args, **kwargs)
 
         return wrapper
