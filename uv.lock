@@ -52,6 +52,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "click" },
     { name = "dataclasses-json" },
+    { name = "dynamic-yaml" },
     { name = "pydantic" },
     { name = "pyyaml" },
     { name = "rich" },
@@ -61,9 +62,22 @@ dependencies = [
 requires-dist = [
     { name = "click", specifier = ">=8.2.1" },
     { name = "dataclasses-json", specifier = ">=0.6.7" },
+    { name = "dynamic-yaml", specifier = ">=2.0.0" },
     { name = "pydantic", specifier = ">=2.11.5" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "rich", specifier = ">=14.0.0" },
+]
+
+[[package]]
+name = "dynamic-yaml"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyyaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e1/7e/161521ea880a2e224430bc8adac8b272a11809240f4bd15ed9680fde27a3/dynamic-yaml-2.0.0.tar.gz", hash = "sha256:7dd6cf3ed4dbeb5e068bf156eeb0808ac5cb92df397a436346b4b849f303b60b", size = 6873, upload-time = "2024-04-09T20:52:43.526Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/66/94c3754092db07aad97213c11be8e699c1aac5e031232974be0bb303d59a/dynamic_yaml-2.0.0-py3-none-any.whl", hash = "sha256:1df58ccb4e43a25e2dbbc795d830a5bc548a2de58a14f8b902e7a20545574d0d", size = 6266, upload-time = "2024-04-09T20:52:42.192Z" },
 ]
 
 [[package]]

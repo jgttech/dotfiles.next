@@ -1,4 +1,4 @@
-import yaml
+from dynamic_yaml import load
 from pathlib import Path
 from src.env import env
 
@@ -17,12 +17,14 @@ class Conf:
             raise FileNotFoundError(file)
 
         with open(file, "r") as ref:
-            data = yaml.safe_load(ref)
-            
+            data = load(ref)
+
+            for package in data["packages"]:
+                self.packages.append(package)
+
             self.name = data["name"]
             self.version = data["version"]
             self.build = data["build"]
-            self.packages = data["packages"]
             self.local = home / data["local"]
 
 conf = Conf()

@@ -40,5 +40,5 @@ packages:
   - fzf
   - atac
   - ctop
-  - nvm@local
-  - omz@local
+  - nvm@{local}
+  - omz@{local}

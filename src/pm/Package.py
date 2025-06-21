@@ -1,5 +1,5 @@
 from pathlib import Path
-from src.conf import conf
+from src.env import env
 
 
 class Package:
@@ -11,16 +11,22 @@ class Package:
 
         if "@" in name:
             pkg, ctx = name.split("@")
+            ctx_path = env.home / ctx
+
             self.name = pkg
 
-            if ctx == "local":
-                for asset in conf.local.iterdir():
-                    if not asset.is_dir() and pkg in str(asset):
-                        self.module = asset
+            if ctx_path.is_dir():
+                for module in ctx_path.iterdir():
+                    if pkg in str(module) and not module.is_dir():
+                        self.module = module
+                        break
 
     def __eq__(self, value: object, /) -> bool:
         if isinstance(value, Package):
-            return self.name == value.name
+            if value.module is not None or self.module is not None:
+                return self.name == value.name and self.module == value.module
+            else:
+                return self.name == value.name
         else:
             return False
 
