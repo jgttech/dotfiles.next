@@ -25,8 +25,8 @@ class PackageManager:
         packages = [p.name for p in self.packages if p.module is None]
         modules = [str(p.module) for p in self.packages if p.module is not None]
 
-        if len(modules) > 0:
-            self.files.install(modules)
-
         if self.source is not None:
             self.source.install(packages)
+
+        if len(modules) > 0:
+            self.files.install(modules)

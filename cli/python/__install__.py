@@ -8,5 +8,6 @@ def main(ctx: cli.Context) -> None:
     print(f"home.....: {env.home}")
     print(f"bin......: {env.bin}")
     print(f"cfg......: {env.cfg}\n")
+    print(f"mode.....: {env.mode}\n")
     print("[Conf]")
     print(f"packages.: {conf.packages}")

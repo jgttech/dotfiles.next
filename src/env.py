@@ -1,4 +1,6 @@
+from typing import Optional
 from pathlib import Path
+from src.cli import MODE
 
 class Environment:
     # The home/root/base directory of the
@@ -16,6 +18,9 @@ class Environment:
 
     # Name of the config file at the root.
     conf_file: Path
+
+    # What mode the environment is in.
+    mode: Optional[MODE] = None
 
     def __init__(self) -> None:
         self.home = Path.cwd()

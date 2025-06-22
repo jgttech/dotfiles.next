@@ -18,7 +18,8 @@ RUN \
   bash \
   sudo \
   man-db \
-  man-pages
+  man-pages && \
+  pacman -Syu --noconfirm
 
 # Makes sure that the user can invoke
 # privilege escalated commands.
