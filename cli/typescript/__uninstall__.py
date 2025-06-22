@@ -1,5 +1,5 @@
 import src.cli as cli
 
-@cli.command("typescript")
+@cli.uninstall("typescript")
 def main(ctx: cli.Context) -> None:
     print("Uninstalling")

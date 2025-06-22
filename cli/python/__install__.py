@@ -1,6 +1,6 @@
 import src.cli as cli
 
-@cli.command("python")
+@cli.install("python")
 def main(ctx: cli.Context) -> None:
     env, conf = ctx.state
 

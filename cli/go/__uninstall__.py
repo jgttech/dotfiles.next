@@ -1,5 +1,5 @@
 import src.cli as cli
 
-@cli.command("go")
+@cli.uninstall("go")
 def main(ctx: cli.Context) -> None:
     print("Uninstalling")

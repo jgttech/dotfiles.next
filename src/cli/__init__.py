@@ -1,2 +1,3 @@
 from .Cli import *
-from .command import *
+from .install import *
+from .uninstall import *

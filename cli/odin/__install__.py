@@ -1,5 +1,5 @@
 import src.cli as cli
 
-@cli.command("odin")
+@cli.install("odin")
 def main(ctx: cli.Context) -> None:
     print("Installing")

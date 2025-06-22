@@ -1,0 +1,27 @@
+[
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "q q": "pane::CloseActiveItem",
+      "cmd l q": "pane::CloseItemsToTheLeft",
+      "cmd r q": "pane::CloseItemsToTheRight",
+      "ctrl-\\": [
+        "workspace::OpenTerminal",
+        {
+          "working_directory": "current_project_directory"
+        }
+      ]
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd h": "workspace::ActivatePaneLeft",
+      "cmd l": "workspace::ActivatePaneRight",
+      "cmd k": "workspace::ActivatePaneUp",
+      "cmd j": "workspace::ActivatePaneDown"
+    }
+  }
+]
