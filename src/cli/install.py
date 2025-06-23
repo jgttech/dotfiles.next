@@ -1,8 +1,7 @@
 import click
 from typing import Callable, TypeVar
-from src.pm import PackageManager
+import src.installer as installer
 from src.env import env
-from src.conf import conf
 from .pass_context import pass_context
 from .Context import Context
 from .MODE import MODE
@@ -15,20 +14,13 @@ def install(dir: str):
         @pass_context
         def wrapper(ctx: Context, *args, **kwargs):
             env.mode = MODE.INSTALL
-            package_manager = PackageManager()
 
-            for package in conf.packages:
-                package_manager.add(package)
-
-            package_manager.install()
-
-            if not env.bin.exists():
-                env.bin.mkdir(parents=True)
-
-            if not env.cfg.exists():
-                env.cfg.mkdir(parents=True)
+            installer.setup()
+            installer.install_packages()
+            installer.create_build()
+            installer.create_backup()
+            installer.create_links()
 
             return fn(ctx, *args, **kwargs)
         return wrapper
     return decorator
-

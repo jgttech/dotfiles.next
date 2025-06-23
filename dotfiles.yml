@@ -6,15 +6,10 @@ name: dotfiles
 # The version of the dotfiles.
 version: 0.0.1
 
-# The source directory for running
-# custom package installers. When
-# I use "<package>@<path>" the "path"
-# is relative to this repo and what
-# this is set to.
-#
-# Example:
-# foo@pkg -> Runs "src/pkg/foo.py"
-local: src/pkg
+# Where Python files can be found
+# to run custom installations for
+# system packages.
+local: pkg
 
 # The packages that need to be
 # installed in the system.
@@ -35,3 +30,6 @@ packages:
   - tree
   - nvm@{local}
   - omz@{local}
+  - powerlevel10k@{local}
+  - zsh-syntax-highlighting@{local}
+  - zsh-autosuggestions@{local}

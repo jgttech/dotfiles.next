@@ -19,6 +19,10 @@ class Environment:
     # Name of the config file at the root.
     conf_file: Path
 
+    # Name of the build file containing all the
+    # build information.
+    build_file: Path
+
     # What mode the environment is in.
     mode: Optional[MODE] = None
 
@@ -28,5 +32,6 @@ class Environment:
         self.cfg = self.build / "cfg"
         self.bin = self.build / "bin"
         self.conf_file = self.home / "dotfiles.yml"
+        self.build_file = self.cfg / ".dotfiles.build.json"
 
 env = Environment()
