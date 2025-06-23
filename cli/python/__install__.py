@@ -28,7 +28,7 @@ def main(ctx: cli.Context) -> None:
     # The code that gets output within
     # the bin directory.
     script = cleandoc("""
-        #!/usr/bin/env bash
+        #!/usr/bin/env zsh
         uv run --directory {src} --project {src} main.py $@
     """.format(**{
         "src": str(env.source),
