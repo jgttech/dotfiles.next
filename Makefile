@@ -7,6 +7,10 @@ arch:
 	@docker compose up arch -d
 	@docker compose exec arch bash -c 'cat $$HOME/$(INSTALL) | bash'
 
-.PHONY: ssh-arch
-ssh-arch:
+.PHONY: zsh
+zsh:
+	@docker compose exec arch zsh
+
+.PHONY: bash
+bash:
 	@docker compose exec arch bash
