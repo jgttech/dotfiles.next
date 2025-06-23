@@ -23,6 +23,10 @@ class Environment:
     # build information.
     build_file: Path
 
+    # This is where the CLI source code is
+    # coming from.
+    source: Path
+
     # What mode the environment is in.
     mode: Optional[MODE] = None
 

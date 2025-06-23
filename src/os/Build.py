@@ -13,6 +13,7 @@ class Build:
     bin: Path = env.bin
     cfg: Path = env.cfg
     zshrc_backup: Path = Path.home() / f".zshrc.{str(int(time()))}.backup"
+    # source: Path = 
     os: list[Path] = []
 
     def __init__(self) -> None:

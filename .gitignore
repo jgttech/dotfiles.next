@@ -416,7 +416,8 @@ temp/
 .env
 .env.local
 .env.*.local
-.env.development
+!.env.development
+!.env.dev
 .env.test
 .env.production
 .env.staging

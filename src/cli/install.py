@@ -13,6 +13,7 @@ def install(dir: str):
         @click.command(dir)
         @pass_context
         def wrapper(ctx: Context, *args, **kwargs):
+            env.source = env.home / "cli" / dir
             env.mode = MODE.INSTALL
 
             installer.setup()

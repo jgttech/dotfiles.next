@@ -1,9 +1,19 @@
-DOTFILES_DIR=".dotfiles"
-DOTFILES_HOME="${HOME}/${DOTFILES_DIR}"
-DOTFILES_ZSHRC="${HOME}/.config/zsh"
-DOTFILES_BUILD_JSON="${HOME}/.dotfiles.build.json"
-DOTFILES_ZSHRC_MAIN="${DOTFILES_ZSHRC}/main.zsh"
-[[ -f "${DOTFILES_ZSHRC_MAIN}" ]] && source "${DOTFILES_ZSHRC_MAIN}";
+# DOTFILES_DIR=".dotfiles"
+# DOTFILES_HOME="${HOME}/${DOTFILES_DIR}"
+# DOTFILES_ZSHRC="${HOME}/.config/zsh"
+# DOTFILES_BUILD_JSON="${HOME}/.dotfiles.build.json"
+# DOTFILES_ZSHRC_MAIN="${DOTFILES_ZSHRC}/main.zsh"
+# [[ -f "${DOTFILES_ZSHRC_MAIN}" ]] && source "${DOTFILES_ZSHRC_MAIN}";
+
+# This is the start to it all. If this works
+# everything else falls into place. This glues
+# the linked/stowed config to the config and CLI.
+DOTFILES_ZSHRC="$HOME/.zshrc.dotfiles"
+[[ -f "$DOTFILES_ZSHRC" ]] && source "$DOTFILES_ZSHRC";
+
+# Load the custom ZSH configuration. This comes from
+# the DOTFILES_ZSHRC loading correctly.
+[[ -f "$DOTFILES_ZSH" ]] && source "$DOTFILES_ZSH";
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -155,4 +165,8 @@ _LOCAL_BIN="$HOME/.local/bin"
 _LM_STUDIO_BIN="$HOME/.lmstudio/bin"
 [[ -d "$_LM_STUDIO_BIN" ]] && export PATH="$PATH:$_LM_STUDIO_BIN";
 
-. "$HOME/.local/bin/env"
+source "$HOME/.local/bin/env"
+
+# If the bin directory for the dotfiles exits
+# load that into the PATH.
+[[ -d "$DOTFILES_BIN" ]] && export PATH="$DOTFILES_BIN:$PATH";
