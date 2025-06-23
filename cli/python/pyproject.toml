@@ -9,4 +9,4 @@ dependencies = [
 ]
 
 [tool.uv]
-env-file = ".env.local"
+env-file = ".env.development"
