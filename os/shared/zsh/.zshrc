@@ -10,10 +10,7 @@
 # the linked/stowed config to the config and CLI.
 DOTFILES_ZSHRC="$HOME/.zshrc.dotfiles"
 [[ -f "$DOTFILES_ZSHRC" ]] && source "$DOTFILES_ZSHRC";
-
-# Load the custom ZSH configuration. This comes from
-# the DOTFILES_ZSHRC loading correctly.
-[[ -f "$DOTFILES_ZSH" ]] && source "$DOTFILES_ZSH";
+[[ -f "$DOTFILES_ZSH_MAIN" ]] && source "$DOTFILES_ZSH_MAIN";
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

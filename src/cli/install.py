@@ -4,7 +4,6 @@ import src.installer as installer
 from src.env import env
 from .pass_context import pass_context
 from .Context import Context
-from .MODE import MODE
 
 T = TypeVar("T")
 
@@ -14,7 +13,6 @@ def install(dir: str):
         @pass_context
         def wrapper(ctx: Context, *args, **kwargs):
             env.source = env.home / "cli" / dir
-            env.mode = MODE.INSTALL
 
             installer.setup()
             installer.install_packages()

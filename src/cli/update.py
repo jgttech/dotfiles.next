@@ -6,7 +6,7 @@ from .Context import Context
 
 T = TypeVar("T")
 
-def uninstall(dir: str):
+def update(dir: str):
     def decorator(fn: Callable[[Context], T]) -> Callable[[], T]:
         @click.command(dir)
         @pass_context

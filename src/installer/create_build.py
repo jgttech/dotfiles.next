@@ -14,7 +14,7 @@ def create_build() -> None:
 
     if not os_path.exists():
         raise FileNotFoundError(os_path)
-        
+
     if not shared_path.exists():
         raise FileNotFoundError(shared_path)
 
@@ -27,6 +27,7 @@ def create_build() -> None:
     for dir in platform_path.iterdir():
         os_packages.append(dir)
 
+    build.lang = build.source.stem
     build.os = os_packages
 
     with open(env.build_file, "w") as file:
@@ -38,7 +39,8 @@ def create_build() -> None:
         file.writelines([
             "#!/usr/bin/env zsh\n",
             export("DOTFILES_BUILD_JSON", HOME / env.build_file.name),
-            export("DOTFILES_ZSH", HOME / ".config/zsh/main.zsh"),
+            export("DOTFILES_ZSH_MAIN", HOME / ".config/zsh/main.zsh"),
+            export("DOTFILES_ZSH_DIR", HOME / ".config/zsh"),
             export("DOTFILES_BIN", env.bin),
             export("DOTFILES_HOME", env.home),
         ])

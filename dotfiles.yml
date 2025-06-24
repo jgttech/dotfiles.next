@@ -28,8 +28,11 @@ packages:
   - atac
   - ctop
   - tree
+  - nvim
   - nvm@{local}
   - omz@{local}
   - powerlevel10k@{local}
   - zsh-syntax-highlighting@{local}
   - zsh-autosuggestions@{local}
+  - nodejs@{local}
+  - bunjs@{local}

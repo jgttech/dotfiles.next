@@ -7,17 +7,16 @@ dotfiles-auto-update() {
   local python_cmd=$(command -v python3 || command -v python)
 
   local cwd=$(pwd)
-  local home=$(dotfiles-json ".home")
-  local tools=$(dotfiles-json ".tools")
-  local cmd="${python_cmd} ${home}/${tools}/build.py"
+  local base=$(dotfiles-json ".home")
+  local lang=$(dotfiles-json ".lang")
 
-  cd "${home}"
+  cd "${base}"
 
   local pull_output=$(git pull 2>&1)
 
   if [[ "$pull_output" != *"Already up to date"* ]]; then
     echo "Updating, please wait..."
-    eval "${cmd}"
+    eval "$HOME/.local/bin/uv run main.py update ${lang}"
   fi
 
   cd "${cwd}"
