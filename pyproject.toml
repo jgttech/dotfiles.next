@@ -13,7 +13,7 @@ dependencies = [
     "rich>=14.0.0",
 ]
 
-# [tool.uv.workspace]
-# members = [
-#     "cli/python",
-# ]
+[tool.uv.workspace]
+members = [
+    "cli/python",
+]
