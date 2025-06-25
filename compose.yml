@@ -13,7 +13,6 @@ services:
       - ./cli:/home/user/.dotfiles/cli
       - ./os:/home/user/.dotfiles/os
       - ./src:/home/user/.dotfiles/src
-      - ./pkg:/home/user/.dotfiles/pkg
       - ./install:/home/user/.dotfiles/install
       - ./main.py:/home/user/.dotfiles/main.py
       - ./dotfiles.yml:/home/user/.dotfiles/dotfiles.yml

@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
-export PATH="$HOME/.config/nvim/bin:$PATH"
-
 if [[ $(uname) == "Darwin" ]]; then
-  source "${DOTFILES_ZSHRC}/etc/os/darwin.zsh"
+  darwin="${DOTFILES_ZSH_DIR}/etc/os/darwin.zsh"
+  [[ -f "$darwin" ]] && source "$darwin"
 elif command -v pacman &> /dev/null; then
-  source "${DOTFILES_ZSHRC}/etc/os/archlinux.zsh"
+  archlinux="$DOTFILES_ZSH_DIR/etc/os/archlinux.zsh"
+  [[ -f "$archlinux" ]] && source "$archlinux";
 fi

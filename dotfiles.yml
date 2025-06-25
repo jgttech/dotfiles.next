@@ -9,7 +9,7 @@ version: 0.0.1
 # Where Python files can be found
 # to run custom installations for
 # system packages.
-local: pkg
+local: src/packages
 
 # The packages that need to be
 # installed in the system.
@@ -29,6 +29,8 @@ packages:
   - ctop
   - tree
   - nvim
+  - btop
+  - brew@{local}
   - nvm@{local}
   - omz@{local}
   - powerlevel10k@{local}
@@ -36,3 +38,4 @@ packages:
   - zsh-autosuggestions@{local}
   - nodejs@{local}
   - bunjs@{local}
+  - lang@{local}

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 dotfiles-auto-source() {
-  local base="${DOTFILES_ZSHRC:-$HOME/.config/zsh}"
+  local base="${DOTFILES_ZSH_DIR:-$HOME/.config/zsh}"
 
   # Files that should be ignored.
   local exclusions=()

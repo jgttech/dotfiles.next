@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+export PATH="$HOME/.config/nvim/bin:$PATH"
+
 # Auto-load the .utils, first.
 for util in "${DOTFILES_ZSH_DIR}/utils"/*; do
   if [[ -f "$util" ]] && [[ -r "$util" ]]; then
