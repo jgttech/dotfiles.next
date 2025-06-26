@@ -36,4 +36,4 @@ packages:
   - zsh-autosuggestions@{local}
   - nodejs@{local}
   - bunjs@{local}
-  # - lang@{local}
+  - lang@{local}
