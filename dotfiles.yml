@@ -11,8 +11,6 @@ version: 0.0.1
 # system packages.
 local: src/packages
 
-# The packages that need to be
-# installed in the system.
 packages:
   - zsh
   - git

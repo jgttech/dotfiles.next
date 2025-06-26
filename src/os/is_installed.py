@@ -3,7 +3,7 @@ from subprocess import run, TimeoutExpired
 from shutil import which
 
 
-def installed(cmd: str) -> bool:
+def is_installed(cmd: str) -> bool:
     where = which(cmd)
 
     if where:

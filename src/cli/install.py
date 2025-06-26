@@ -3,7 +3,6 @@ from os import rename
 from sys import platform
 from subprocess import call
 from typing import Callable, TypeVar
-import src.installer as installer
 from pathlib import Path
 from src.os import Build
 from src.pm import PackageManager

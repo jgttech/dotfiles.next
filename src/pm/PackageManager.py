@@ -1,8 +1,6 @@
-from src.os import installed
+from src.os import is_installed
 from .Package import Package
-from .source.Files import Files
-from .source.Brew import Brew
-from .source.Pacman import Pacman
+from .source import Files, Brew, Pacman
 
 class PackageManager:
     packages: list[Package] = []
@@ -10,9 +8,9 @@ class PackageManager:
     files = Files()
 
     def __init__(self) -> None:
-        if installed("pacman"):
+        if is_installed("pacman"):
             self.source = Pacman()
-        elif installed("brew"):
+        elif is_installed("brew"):
             self.source = Brew()
 
     def add(self, name: str) -> None:
