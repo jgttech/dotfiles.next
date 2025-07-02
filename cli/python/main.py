@@ -1,5 +1,4 @@
-from src.cli import Cli
+from cmds import run
 
 if __name__ == "__main__":
-    cli = Cli()
-    cli.run()
+    run()
