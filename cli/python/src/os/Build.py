@@ -32,3 +32,5 @@ class Build:
 
             for pkg in data["os"]:
                 self.os.append(self.home / pkg)
+
+build = Build()
